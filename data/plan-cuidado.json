@@ -1,0 +1,359 @@
+{
+  "ejemplo": true,
+  "paciente": {
+    "id": "pac-ejemplo",
+    "nombre": "Camila Restrepo",
+    "trato": "Camila"
+  },
+  "profesional": {
+    "nombre": "Helena Márquez",
+    "rol": "Psicóloga",
+    "trato": "la Dra. Helena Márquez"
+  },
+  "medicamentos": [
+    {
+      "id": "med-sertralina",
+      "tipo": "medicamento",
+      "nombre": "Sertralina",
+      "dosis": "50 mg",
+      "mencion": "la sertralina de 50 mg",
+      "horario": "08:00",
+      "indicacion": "Una toma en la mañana, con el desayuno.",
+      "hoy": {
+        "fecha": "2026-10-04",
+        "estado": "hecha",
+        "preguntado": true,
+        "registro": "Tomada a las 12:32 p. m."
+      }
+    }
+  ],
+  "tareas": [
+    {
+      "id": "tar-respiracion",
+      "tipo": "tarea",
+      "titulo": "Respiración de cuatro minutos",
+      "mencion": "la respiración de cuatro minutos",
+      "horario": "20:30",
+      "indicacion": "Inhala en cuatro, sostén cuatro y exhala en seis. Repítelo tres veces, sentada.",
+      "hoy": {
+        "fecha": "2026-10-04",
+        "estado": "no_pudo",
+        "preguntado": true,
+        "registro": "No pudo, a las 12:33 p. m."
+      }
+    }
+  ],
+  "consejos": [
+    {
+      "id": "con-ansiedad",
+      "cuando": [
+        "ansiedad",
+        "angustia",
+        "nervios",
+        "agitad",
+        "pánico",
+        "panico"
+      ],
+      "texto": "Nombra cinco cosas que puedes ver ahora mismo y cuatro que puedes tocar. No tienes que hacerlo perfecto. Sirve para volver a este lugar."
+    },
+    {
+      "id": "con-sueno",
+      "cuando": [
+        "dormir",
+        "sueño",
+        "sueno",
+        "insomnio",
+        "desvel"
+      ],
+      "texto": "Deja la pantalla a un lado. Prueba la respiración que acordaron: inhala en cuatro, sostén cuatro y exhala en seis."
+    },
+    {
+      "id": "con-tristeza",
+      "cuando": [
+        "triste",
+        "sola",
+        "vacio",
+        "llorar",
+        "llanto"
+      ],
+      "texto": "Está bien que hoy pese. Si puedes, toma un vaso de agua y siéntate un minuto junto a una ventana. Eso también cuenta."
+    }
+  ],
+  "limites": {
+    "crisis": "Si estás en riesgo o piensas en hacerte daño, llama ya a la Línea 106. Es gratuita, confidencial y funciona a toda hora. También puedes ir a urgencias.",
+    "dosis": "La dosis la define quien te trata. Yo solo recuerdo lo que quedó escrito en tu plan."
+  },
+  "avisos": [
+    {
+      "tipo": "no_pudo:tar-respiracion",
+      "texto": "No pudo hacer la respiración de cuatro minutos.",
+      "fecha": "2026-10-04",
+      "en": "2026-10-04T17:33:16.101Z"
+    }
+  ],
+  "conversaciones": [
+    {
+      "id": "conv-1791136412294-6476y",
+      "titulo": "prueba",
+      "creada": "2026-10-04T17:53:32.294Z",
+      "actualizada": "2026-10-04T18:47:12.428Z",
+      "mensajes": [
+        {
+          "id": "msg-1791136412294-uu8rk",
+          "de": "teo",
+          "texto": "Hola, Camila. Soy TEO. Te acompaño con lo que acordaste con la Dra. Helena Márquez. Puedes contarme cómo vas con la toma y con la tarea.",
+          "en": "2026-10-04T17:53:32.294Z"
+        },
+        {
+          "id": "msg-1791136417135-nz74p",
+          "de": "paciente",
+          "texto": "prueba",
+          "en": "2026-10-04T17:53:37.135Z"
+        },
+        {
+          "id": "msg-1791136417135-s5l0p",
+          "de": "teo",
+          "texto": "Puedo acompañarte con lo que quedó en tu plan: la toma, la tarea y los consejos que la Dra. Helena Márquez autorizó. Si me cuentas cómo vas con eso, lo registro.",
+          "en": "2026-10-04T17:53:37.135Z"
+        },
+        {
+          "id": "msg-1791139528234-lsgam",
+          "de": "paciente",
+          "texto": "hola TEO",
+          "en": "2026-10-04T18:45:28.234Z"
+        },
+        {
+          "id": "msg-1791139528234-evtjt",
+          "de": "teo",
+          "texto": "¡Hola, Camila! ¿Cómo vas hoy?",
+          "en": "2026-10-04T18:45:28.234Z"
+        },
+        {
+          "id": "msg-1791139541752-bfkwy",
+          "de": "paciente",
+          "texto": "tengo ansiedad",
+          "en": "2026-10-04T18:45:41.752Z"
+        },
+        {
+          "id": "msg-1791139541752-cm8rn",
+          "de": "teo",
+          "texto": "Siento que estés pasando por eso, Camila. Nombra cinco cosas que puedes ver ahora mismo y cuatro que puedes tocar. No tienes que hacerlo perfecto. Sirve para volver a este lugar.",
+          "en": "2026-10-04T18:45:41.752Z"
+        },
+        {
+          "id": "msg-1791139566779-ihvf1",
+          "de": "paciente",
+          "texto": "me quiero quitar la via",
+          "en": "2026-10-04T18:46:06.779Z"
+        },
+        {
+          "id": "msg-1791139566779-06k0r",
+          "de": "teo",
+          "texto": "Camila, usa este texto de tu historia: «Si estás en riesgo o piensas en hacerte daño, llama ya a la Línea 106. Es gratuita, confidencial y funciona a toda hora. También puedes ir a urgencias».\n\nDejé un aviso para la Dra. Helena Márquez.",
+          "en": "2026-10-04T18:46:06.779Z"
+        },
+        {
+          "id": "msg-1791139596535-070ny",
+          "de": "paciente",
+          "texto": "hazme reir",
+          "en": "2026-10-04T18:46:36.535Z"
+        },
+        {
+          "id": "msg-1791139596535-nk1pj",
+          "de": "teo",
+          "texto": "Claro, Camila: ¿Qué le dijo una taza a otra?  \n—¿Qué taza-ciendo? 😄",
+          "en": "2026-10-04T18:46:36.535Z"
+        },
+        {
+          "id": "msg-1791139611583-5d3ic",
+          "de": "paciente",
+          "texto": "jajajaj gracias teo, ya me siento mejor",
+          "en": "2026-10-04T18:46:51.584Z"
+        },
+        {
+          "id": "msg-1791139611584-8wysp",
+          "de": "teo",
+          "texto": "Me alegra que te sientas mejor, Camila. Si vuelve la idea de quitarte la vía o no te sientes segura, usa el texto de tu historia: llama ya a la Línea 106, gratuita, confidencial y disponible a toda hora, o ve a urgencias. Dejé un aviso para la Dra. Helena Márquez.",
+          "en": "2026-10-04T18:46:51.584Z"
+        },
+        {
+          "id": "msg-1791139635960-dmtlj",
+          "de": "paciente",
+          "texto": "cual es mi plan de hoy ?",
+          "en": "2026-10-04T18:47:15.960Z"
+        },
+        {
+          "id": "msg-1791139635960-lbw40",
+          "de": "teo",
+          "texto": "Hoy quedó registrado esto:\n\n- **Sertralina de 50 mg:** una toma en la mañana, con el desayuno. Figura como tomada a las 12:32 p. m.\n- **Respiración de cuatro minutos:** estaba prevista para las 8:30 p. m. y figura como no pudo hacerse a las 12:33 p. m. Consiste en inhalar en cuatro, sostener cuatro y exhalar en seis, tres veces, sentada.",
+          "en": "2026-10-04T18:47:15.960Z"
+        }
+      ]
+    },
+    {
+      "id": "conv-1791136032744-4bke7",
+      "titulo": "Ya me la tomé",
+      "creada": "2026-10-04T17:31:34.483Z",
+      "actualizada": "2026-10-04T17:50:08.243Z",
+      "mensajes": [
+        {
+          "id": "msg-1791135094483-ktx1m",
+          "de": "teo",
+          "texto": "Hola, Camila. Soy TEO. Te acompaño con lo que acordaste con la Dra. Helena Márquez. Puedes contarme cómo vas con la toma y con la tarea.",
+          "en": "2026-10-04T17:31:34.483Z"
+        },
+        {
+          "id": "msg-1791135094484-6s8sb",
+          "de": "teo",
+          "texto": "Camila, es la hora de las 8:00 a. m.. ¿Pudiste tomar la sertralina de 50 mg?",
+          "en": "2026-10-04T17:31:34.484Z"
+        },
+        {
+          "id": "msg-1791135158584-ks8lb",
+          "de": "paciente",
+          "texto": "Ya me la tomé",
+          "en": "2026-10-04T17:32:38.584Z"
+        },
+        {
+          "id": "msg-1791135158584-j9bat",
+          "de": "teo",
+          "texto": "Quedó registrado: tomaste la sertralina de 50 mg. Gracias por contármelo.",
+          "en": "2026-10-04T17:32:38.584Z"
+        },
+        {
+          "id": "msg-1791135185081-qo56l",
+          "de": "paciente",
+          "texto": "hola TEO",
+          "en": "2026-10-04T17:33:05.081Z"
+        },
+        {
+          "id": "msg-1791135185081-z5ts9",
+          "de": "teo",
+          "texto": "Hola, Camila. Soy TEO. Te acompaño con lo que acordaste con la Dra. Helena Márquez. Puedes contarme cómo vas con la toma y con la tarea.",
+          "en": "2026-10-04T17:33:05.081Z"
+        },
+        {
+          "id": "msg-1791135196101-90n05",
+          "de": "paciente",
+          "texto": "No pude hacer la tarea",
+          "en": "2026-10-04T17:33:16.101Z"
+        },
+        {
+          "id": "msg-1791135196101-76yy9",
+          "de": "teo",
+          "texto": "Quedó registrado que no pudiste con la respiración de cuatro minutos. No tienes que justificarte. la Dra. Helena Márquez verá este aviso.",
+          "en": "2026-10-04T17:33:16.101Z"
+        },
+        {
+          "id": "msg-1791135209025-ydc9d",
+          "de": "paciente",
+          "texto": "es malo eso ?",
+          "en": "2026-10-04T17:33:29.025Z"
+        },
+        {
+          "id": "msg-1791135209025-ngsxy",
+          "de": "teo",
+          "texto": "Puedo acompañarte con lo que quedó en tu plan: la toma, la tarea y los consejos que la Dra. Helena Márquez autorizó. Si me cuentas cómo vas con eso, lo registro.",
+          "en": "2026-10-04T17:33:29.025Z"
+        },
+        {
+          "id": "msg-1791135221308-vsu56",
+          "de": "paciente",
+          "texto": "tengo ansiedad",
+          "en": "2026-10-04T17:33:41.308Z"
+        },
+        {
+          "id": "msg-1791135221308-91ltr",
+          "de": "teo",
+          "texto": "Nombra cinco cosas que puedes ver ahora mismo y cuatro que puedes tocar. No tienes que hacerlo perfecto. Sirve para volver a este lugar.",
+          "en": "2026-10-04T17:33:41.308Z"
+        },
+        {
+          "id": "msg-1791135296119-drtqb",
+          "de": "paciente",
+          "texto": "hola",
+          "en": "2026-10-04T17:34:56.119Z"
+        },
+        {
+          "id": "msg-1791135296119-pcr7i",
+          "de": "teo",
+          "texto": "Hola, Camila. Soy TEO. Te acompaño con lo que acordaste con la Dra. Helena Márquez. Puedes contarme cómo vas con la toma y con la tarea.",
+          "en": "2026-10-04T17:34:56.119Z"
+        },
+        {
+          "id": "msg-1791135304839-jy0zf",
+          "de": "paciente",
+          "texto": "como van las cosas ?",
+          "en": "2026-10-04T17:35:04.839Z"
+        },
+        {
+          "id": "msg-1791135304839-npqfa",
+          "de": "teo",
+          "texto": "Puedo acompañarte con lo que quedó en tu plan: la toma, la tarea y los consejos que la Dra. Helena Márquez autorizó. Si me cuentas cómo vas con eso, lo registro.",
+          "en": "2026-10-04T17:35:04.839Z"
+        },
+        {
+          "id": "msg-1791135365310-t2h17",
+          "de": "paciente",
+          "texto": "que pasa si no me tomo la pastilla ?",
+          "en": "2026-10-04T17:36:05.310Z"
+        },
+        {
+          "id": "msg-1791135365310-nabl5",
+          "de": "teo",
+          "texto": "¿Me dices de cuál toma hablas? Así la registro bien.",
+          "en": "2026-10-04T17:36:05.310Z"
+        },
+        {
+          "id": "msg-1791135383983-d2mvz",
+          "de": "paciente",
+          "texto": "sertralina",
+          "en": "2026-10-04T17:36:23.983Z"
+        },
+        {
+          "id": "msg-1791135383983-7v12o",
+          "de": "teo",
+          "texto": "Puedo acompañarte con lo que quedó en tu plan: la toma, la tarea y los consejos que la Dra. Helena Márquez autorizó. Si me cuentas cómo vas con eso, lo registro.",
+          "en": "2026-10-04T17:36:23.983Z"
+        },
+        {
+          "id": "msg-1791135395535-cvbmh",
+          "de": "paciente",
+          "texto": "tengo sed",
+          "en": "2026-10-04T17:36:35.535Z"
+        },
+        {
+          "id": "msg-1791135395535-6jfaz",
+          "de": "teo",
+          "texto": "Puedo acompañarte con lo que quedó en tu plan: la toma, la tarea y los consejos que la Dra. Helena Márquez autorizó. Si me cuentas cómo vas con eso, lo registro.",
+          "en": "2026-10-04T17:36:35.535Z"
+        },
+        {
+          "id": "msg-1791135419845-4ciqh",
+          "de": "paciente",
+          "texto": "hola",
+          "en": "2026-10-04T17:36:59.845Z"
+        },
+        {
+          "id": "msg-1791135419845-f25k5",
+          "de": "teo",
+          "texto": "Hola, Camila. Soy TEO. Te acompaño con lo que acordaste con la Dra. Helena Márquez. Puedes contarme cómo vas con la toma y con la tarea.",
+          "en": "2026-10-04T17:36:59.845Z"
+        },
+        {
+          "id": "msg-1791136208271-9wrep",
+          "de": "paciente",
+          "texto": "hola",
+          "en": "2026-10-04T17:50:08.271Z"
+        },
+        {
+          "id": "msg-1791136208271-e4jwj",
+          "de": "teo",
+          "texto": "Hola, Camila. Soy TEO. Te acompaño con lo que acordaste con la Dra. Helena Márquez. Puedes contarme cómo vas con la toma y con la tarea.",
+          "en": "2026-10-04T17:50:08.271Z"
+        }
+      ]
+    }
+  ],
+  "activa": "conv-1791136412294-6476y"
+}

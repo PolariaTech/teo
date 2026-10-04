@@ -1,0 +1,233 @@
+.conversacion {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.mensajes {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 22px 20px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mensaje {
+  max-width: min(38rem, 88%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mensaje--teo {
+  align-self: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: min(40rem, 94%);
+}
+
+.mensaje__cuerpo {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mensaje--paciente .mensaje__cuerpo {
+  align-items: flex-end;
+}
+
+.mensaje--paciente {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.mensaje__quien {
+  font-family: var(--font-serif), Literata, Georgia, serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+.mensaje--paciente .mensaje__quien {
+  color: var(--clay);
+}
+
+.mensaje__texto {
+  padding: 12px 14px;
+  border-radius: 16px;
+  white-space: pre-wrap;
+}
+
+.mensaje--teo .mensaje__texto {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+.mensaje--paciente .mensaje__texto {
+  background: var(--sage-soft);
+}
+
+.mensaje__hora {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.compositor {
+  border-top: 1px solid var(--line);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sugerencias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sugerencia {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--sage-deep);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.92rem;
+}
+
+.sugerencia:hover {
+  background: var(--sage-soft);
+}
+
+.sugerencia:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.compositor__fila {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.compositor textarea {
+  flex: 1;
+  resize: none;
+  border: 1px solid var(--line);
+  background: #fffdf9;
+  border-radius: 14px;
+  padding: 12px 14px;
+  min-height: 52px;
+  line-height: 1.4;
+}
+
+.compositor textarea::placeholder {
+  color: #8a8176;
+}
+
+.enviar {
+  border: 0;
+  background: var(--sage);
+  color: #f7f4ee;
+  border-radius: 14px;
+  padding: 12px 16px;
+  min-height: 52px;
+}
+
+.enviar:hover {
+  background: var(--sage-deep);
+}
+
+.enviar:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.compositor__error {
+  color: var(--clay);
+  font-size: 0.92rem;
+}
+
+.mensaje--escribiendo {
+  align-items: center;
+}
+
+.escribiendo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+.escribiendo span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sage);
+  animation: teo-escribiendo 1.15s ease-in-out infinite;
+}
+
+.escribiendo span:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.escribiendo span:nth-child(3) {
+  animation-delay: 0.32s;
+}
+
+@keyframes teo-escribiendo {
+  0%,
+  70%,
+  100% {
+    opacity: 0.28;
+  }
+  35% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .escribiendo span {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+.conversacion--vacia {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding: 28px 22px;
+  color: var(--ink-soft);
+}
+
+.conversacion--vacia p {
+  max-width: 22rem;
+}
+
+.conversacion--vacia button {
+  border: 0;
+  background: var(--sage);
+  color: #f7f4ee;
+  border-radius: 14px;
+  min-height: 44px;
+  padding: 10px 16px;
+}
+
+.conversacion--vacia button:hover {
+  background: var(--sage-deep);
+}

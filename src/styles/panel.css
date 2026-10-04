@@ -1,0 +1,106 @@
+.panel {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px 20px 18px;
+}
+
+.panel__encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.panel__kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.panel__titulo {
+  font-family: var(--font-serif), Literata, Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--sage-deep);
+}
+
+.panel__trato {
+  color: var(--ink-soft);
+}
+
+.panel__alerta {
+  background: var(--clay-soft);
+  color: #5c3a2c;
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.bloque {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bloque__titulo {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.ficha {
+  border: 1px solid var(--line);
+  background: #fffdf9;
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ficha__hora {
+  font-variant-numeric: tabular-nums;
+  color: var(--sage);
+  font-size: 0.92rem;
+}
+
+.ficha__nombre {
+  font-weight: 600;
+}
+
+.ficha__detalle,
+.ficha__estado {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.ficha--hecha {
+  background: var(--sage-soft);
+  border-color: transparent;
+}
+
+.ficha--no_pudo {
+  background: var(--clay-soft);
+  border-color: transparent;
+}
+
+.aviso {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.panel__limite {
+  margin-top: auto;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}

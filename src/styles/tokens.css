@@ -1,0 +1,22 @@
+:root {
+  --bg: #efe6d8;
+  --surface: #fbf7f1;
+  --surface-2: #f3ece3;
+  --ink: #24312c;
+  --ink-soft: #5c6a63;
+  --line: #e4d9cb;
+  --sage: #2f5d4a;
+  --sage-deep: #234736;
+  --sage-soft: #e5efe8;
+  --clay: #8c5a44;
+  --clay-soft: #f6ebe4;
+  --shadow: 0 18px 40px rgba(36, 49, 44, 0.07);
+  --radius: 22px;
+  --espacio: 16px;
+}
+
+@media (max-width: 860px) {
+  :root {
+    --espacio: 12px;
+  }
+}

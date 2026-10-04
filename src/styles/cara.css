@@ -1,0 +1,29 @@
+.cara {
+  display: inline-flex;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px #fffdf9, 0 0 0 3px var(--line);
+}
+
+.cara svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cara--mensaje {
+  width: 36px;
+  height: 36px;
+}
+
+.cara--grande {
+  width: 48px;
+  height: 48px;
+}
+
+.cara--login {
+  width: 88px;
+  height: 88px;
+  box-shadow: 0 0 0 3px #fffdf9, 0 0 0 4px var(--line);
+}
