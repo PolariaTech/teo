@@ -53,9 +53,14 @@ export async function POST(request) {
       return true;
     });
     return Response.json(plan);
-  } catch {
+  } catch (error) {
+    const disco = ["EROFS", "EACCES", "EPERM", "ENOENT"].includes(error?.code);
     return Response.json(
-      { error: "No pude actualizar el historial." },
+      {
+        error: disco
+          ? "No pude guardar la conversación en el servidor."
+          : "No pude actualizar el historial.",
+      },
       { status: 500 }
     );
   }

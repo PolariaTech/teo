@@ -10,15 +10,29 @@ import { crearMensaje } from "../../../lib/mensajes";
 import { prepararPlan } from "../../../lib/preparar";
 import { respuestaDeCuidado } from "../../../lib/teo";
 
+function codigoDe(error) {
+  if (!error) return "";
+  if (typeof error.codigo === "string") return error.codigo;
+  if (error.name === "ErrorDeModelo") return String(error.message || "");
+  return "";
+}
+
 function errorParaLaPersona(error) {
-  if (!(error instanceof ErrorDeModelo)) return "No pude registrar el mensaje.";
-  if (error.codigo === "sin_clave") {
-    return "Falta la clave del modelo. Escríbela en .env.local como OPENAI_API_KEY y reinicia el servidor.";
+  const codigo = codigoDe(error);
+  if (codigo === "sin_clave") {
+    return "Falta la clave del modelo. Escríbela en el servidor como OPENAI_API_KEY y reinicia la aplicación.";
   }
-  if (error.codigo === "clave_invalida") {
-    return "La clave del modelo no fue aceptada. Revísala en .env.local y reinicia el servidor.";
+  if (codigo === "clave_invalida") {
+    return "La clave del modelo no fue aceptada. Revísala en el servidor y reinicia la aplicación.";
   }
-  return "No pude consultar el modelo en este momento. Intenta de nuevo.";
+  if (codigo === "modelo" || codigo === "sin_respuesta") {
+    return "No pude consultar el modelo en este momento. Intenta de nuevo.";
+  }
+  if (error?.code === "EROFS" || error?.code === "EACCES" || error?.code === "EPERM" || error?.code === "ENOENT") {
+    return "No pude guardar la conversación en el servidor.";
+  }
+  console.error("mensaje", error?.code || error?.name || "error");
+  return "No pude registrar el mensaje.";
 }
 
 export const dynamic = "force-dynamic";
@@ -55,6 +69,7 @@ export async function POST(request) {
       if (activa.titulo === "Nueva conversación") {
         activa.titulo = tituloDe(texto);
       }
+      if (!Array.isArray(activa.mensajes)) activa.mensajes = [];
       activa.mensajes.push(crearMensaje("paciente", texto));
       activa.mensajes.push(crearMensaje("teo", respuesta));
       activa.actualizada = ahora.toISOString();

@@ -26,6 +26,7 @@ const HERRAMIENTA = {
 export class ErrorDeModelo extends Error {
   constructor(codigo) {
     super(codigo);
+    this.name = "ErrorDeModelo";
     this.codigo = codigo;
   }
 }
@@ -88,13 +89,14 @@ async function pedir(clave, cuerpo) {
   if (!respuesta.ok) {
     throw new ErrorDeModelo("modelo");
   }
-  return respuesta.json();
+  try {
+    return await respuesta.json();
+  } catch {
+    throw new ErrorDeModelo("modelo");
+  }
 }
 
-export async function responderConModelo(plan, conversacion, entrada) {
-  const clave = String(process.env.OPENAI_API_KEY || "").trim();
-  if (!clave) throw new ErrorDeModelo("sin_clave");
-
+async function completar(clave, plan, entrada, conversacion, esfuerzo) {
   let input = historial(conversacion, entrada);
   let anterior = null;
 
@@ -107,17 +109,19 @@ export async function responderConModelo(plan, conversacion, entrada) {
       tool_choice: paso === 0
         ? { type: "function", name: "consultar_historia_clinica" }
         : "auto",
-      reasoning: { effort: "low" },
-      max_output_tokens: 500,
+      reasoning: { effort: esfuerzo },
+      max_output_tokens: 4096,
+      store: true,
       ...(anterior ? { previous_response_id: anterior } : {}),
     });
 
-    anterior = data.id;
-    const llamadas = (data.output || []).filter((item) => item.type === "function_call");
+    anterior = data.id || null;
+    const salida = Array.isArray(data.output) ? data.output : [];
+    const llamadas = salida.filter((item) => item && item.type === "function_call" && item.call_id);
     if (!llamadas.length) {
       const texto = textoDe(data);
-      if (!texto) throw new ErrorDeModelo("sin_respuesta");
-      return texto;
+      if (texto) return texto;
+      throw new ErrorDeModelo("sin_respuesta");
     }
 
     input = llamadas.map((llamada) => ({
@@ -128,4 +132,16 @@ export async function responderConModelo(plan, conversacion, entrada) {
   }
 
   throw new ErrorDeModelo("sin_respuesta");
+}
+
+export async function responderConModelo(plan, conversacion, entrada) {
+  const clave = String(process.env.OPENAI_API_KEY || "").trim();
+  if (!clave) throw new ErrorDeModelo("sin_clave");
+
+  try {
+    return await completar(clave, plan, entrada, conversacion, "low");
+  } catch (error) {
+    if (error?.codigo !== "sin_respuesta") throw error;
+    return completar(clave, plan, entrada, conversacion, "none");
+  }
 }
