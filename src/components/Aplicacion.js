@@ -8,6 +8,32 @@ import Login from "./Login";
 import PanelCuidado from "./PanelCuidado";
 
 const SESION = "teo-sesion";
+const COPIA = "teo-plan";
+
+function leerCopia() {
+  try {
+    const texto = localStorage.getItem(COPIA);
+    if (!texto) return null;
+    const plan = JSON.parse(texto);
+    if (!plan?.paciente || !Array.isArray(plan.conversaciones)) return null;
+    return plan;
+  } catch {
+    return null;
+  }
+}
+
+function guardarCopia(plan) {
+  if (!plan?.paciente) return;
+  localStorage.setItem(COPIA, JSON.stringify(plan));
+}
+
+function preferir(servidor, copia) {
+  if (!copia) return servidor;
+  if (!servidor) return copia;
+  const local = Number(copia.revision) || 0;
+  const remoto = Number(servidor.revision) || 0;
+  return local >= remoto ? copia : servidor;
+}
 
 function sugerenciasDe(plan) {
   if (!plan) return [];
@@ -31,7 +57,9 @@ export default function Aplicacion() {
     const respuesta = await fetch("/api/estado", { cache: "no-store" });
     if (!respuesta.ok) throw new Error("estado");
     const cuerpo = await respuesta.json();
-    setPlan(cuerpo);
+    const elegido = preferir(cuerpo, leerCopia());
+    guardarCopia(elegido);
+    setPlan(elegido);
     setError("");
   }, []);
 
@@ -74,13 +102,14 @@ export default function Aplicacion() {
       const respuesta = await fetch("/api/conversacion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ accion, id }),
+        body: JSON.stringify({ accion, id, plan: leerCopia() || plan }),
       });
       const cuerpo = await respuesta.json();
       if (!respuesta.ok) {
         setError(cuerpo.error || "No pude actualizar el historial.");
         return;
       }
+      guardarCopia(cuerpo);
       setPlan(cuerpo);
     } catch {
       setError("No pude actualizar el historial. Intenta de nuevo.");
@@ -113,7 +142,7 @@ export default function Aplicacion() {
       const respuesta = await fetch("/api/mensaje", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ texto }),
+        body: JSON.stringify({ texto, plan: leerCopia() || plan }),
       });
       const cuerpo = await respuesta.json();
       if (!respuesta.ok) {
@@ -122,6 +151,7 @@ export default function Aplicacion() {
       }
       const falta = 900 - (Date.now() - inicio);
       if (falta > 0) await new Promise((resolver) => setTimeout(resolver, falta));
+      guardarCopia(cuerpo);
       setPlan(cuerpo);
     } catch {
       setError("No pude enviar el mensaje. Intenta de nuevo.");

@@ -1,5 +1,5 @@
 import { ErrorDeModelo, responderConModelo } from "../../../lib/agente";
-import { actualizarPlan } from "../../../lib/archivo";
+import { actualizarPlan, planRecibido } from "../../../lib/archivo";
 import {
   conversacionActiva,
   crearConversacion,
@@ -75,7 +75,7 @@ export async function POST(request) {
       activa.actualizada = ahora.toISOString();
       ponerAlFrente(estado, activa.id);
       return true;
-    });
+    }, planRecibido(cuerpo.plan));
     return Response.json(plan);
   } catch (error) {
     const codigo = error instanceof ErrorDeModelo && error.codigo === "sin_clave" ? 503 : 500;

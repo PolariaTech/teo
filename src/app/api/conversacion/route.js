@@ -1,4 +1,4 @@
-import { actualizarPlan } from "../../../lib/archivo";
+import { actualizarPlan, planRecibido } from "../../../lib/archivo";
 import {
   conversacionActiva,
   crearConversacion,
@@ -51,7 +51,7 @@ export async function POST(request) {
         estado.activa = estado.conversaciones[0].id;
       }
       return true;
-    });
+    }, planRecibido(cuerpo.plan));
     return Response.json(plan);
   } catch (error) {
     const disco = ["EROFS", "EACCES", "EPERM", "ENOENT"].includes(error?.code);
